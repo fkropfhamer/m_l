@@ -36,4 +36,14 @@ class Perceptron:
 
 if __name__ == "__main__":
     print("test")
+    with open("data/simple/points_linear_origin.txt") as file:
+        x = filter(lambda x: x != '', file.read().split('\n'))
+        y = [[int(b) for b in a.split(",")] for a in x]
+        print(y)
+
+        #with open("data/simple/points_linear.txt", "w+") as f:
+         #   for i in [",".join([str(a[0]), str(a[1] + 5), str(a[2])]) + "\n" for a in y]:
+          #      print(i)
+           #     f.write(i)
+
     
