@@ -6,6 +6,6 @@ def accuracy(feature_set, labels, predict_fn):
 
         if prediction == label: 
             r += 1 
-
-    return r / len(feature_set)
+    
+    return float(r) / len(feature_set)
     

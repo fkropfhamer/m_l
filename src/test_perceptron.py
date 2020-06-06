@@ -3,6 +3,9 @@ import unittest
 from perceptron import Perceptron
 
 class PeceptronTest(unittest.TestCase):
+    def setUp(self):
+        self.perceptron = Perceptron()
+
     def test_init(self):
         """
         Ensure the object is setup correct
