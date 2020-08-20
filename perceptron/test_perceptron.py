@@ -1,7 +1,7 @@
 import unittest
 from perceptron.perceptron import Perceptron
 
-class PeceptronTest(unittest.TestCase):
+class PerceptronTest(unittest.TestCase):
     def setUp(self):
         self.perceptron = Perceptron()
 
