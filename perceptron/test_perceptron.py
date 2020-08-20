@@ -1,6 +1,5 @@
 import unittest
-
-from perceptron import Perceptron
+from perceptron.perceptron import Perceptron
 
 class PeceptronTest(unittest.TestCase):
     def setUp(self):

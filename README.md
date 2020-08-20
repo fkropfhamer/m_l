@@ -1,1 +1,1 @@
-ML without libary.
+ML (machine learning)
