@@ -1,12 +1,12 @@
 import numpy as np
 from neural_network.activation import relu
 
-class DenseLayer():
+
+class DenseLayer:
     def __init__(self, units, activation='relu'):
         self.weights = np.random.normal(size=units)
-		
-	self.activation = relu
+
+        self.activation = relu
 
     def feed_forward(self, inputs):
-	return self.activation(np.dot(self.weights, inputs) 
-
+        return self.activation(np.dot(self.weights, inputs))
