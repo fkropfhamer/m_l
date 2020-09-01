@@ -3,10 +3,10 @@ from neural_network.activation import relu
 
 
 class DenseLayer:
-    def __init__(self, units, activation='relu'):
-        self.weights = np.random.normal(size=units)
+    def __init__(self, input, units, activation='relu'):
+        self.weights = np.random.normal(size=(input, units))
 
-        self.activation = relu
+        self.activation = np.vectorize(relu)
 
     def feed_forward(self, inputs):
-        return self.activation(np.dot(self.weights, inputs))
+        return self.activation(np.dot(self.weights.T, inputs))
