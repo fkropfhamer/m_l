@@ -1,10 +1,16 @@
-from neural_network.dense import DenseLayer
 import numpy as np
 
 
 class NeuralNetwork:
-    def __init__(self):
-        self.layers = [DenseLayer(2, 3), DenseLayer(3, 3)]
+    def __init__(self, layers=None):
+        if layers is None:
+            layers=[]
+            
+        self.layers = layers
+
+    def add_layer(self, layer):
+        self.layers.append(layer)
+
 
     def fit(self, trainings_data, labels, epochs=10):
         """Train the neural network
