@@ -31,18 +31,23 @@ class NeuralNetwork:
                 self.update_weights(features, label, learning_rate)
 
 
-    def update_weights(self, features, labels, learning_rate):
+    def update_weights(self, features, label, learning_rate):
         inputs = [features]
         outputs = []
-        errors = []
 
         for layer in self.layers:
             output = layer.feed_forward(inputs[-1])
             outputs.append(output)
             inputs.append(output)
 
+        errors = [(label - outputs[-1])]
+
         for layer in reversed(self.layers):
-            errors.append(layer.error())
+            errors.append(layer.error(errors[-1]))
+
+        for i, layer in enumerate(self.layers):
+            DM = layer.calculate_delta_matrix(inputs[i], outputs[i], errors[-(i+1)], learning_rate)
+            layer.apply_delta_matrix(DM)
 
     def predict(self, features):
         prediction = features
