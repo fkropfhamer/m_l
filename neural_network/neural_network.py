@@ -12,7 +12,7 @@ class NeuralNetwork:
         self.layers.append(layer)
 
 
-    def fit(self, trainings_data, labels, epochs=10, learning_rate=0.1):
+    def fit(self, trainings_data, epochs=10, learning_rate=0.1):
         """Train the neural network
 
         Keyword arguments:
@@ -26,8 +26,8 @@ class NeuralNetwork:
 
             for row in trainings_data:
                 features = row[:-1]
-                label = row[len(row) - 1]
-                
+                label = row[-1]
+
                 self.update_weights(features, label, learning_rate)
 
 
@@ -43,7 +43,7 @@ class NeuralNetwork:
         errors = [(label - outputs[-1])]
 
         for layer in reversed(self.layers):
-            errors.append(layer.error(errors[-1]))
+            errors.append(layer.calculate_error(errors[-1]))
 
         for i, layer in enumerate(self.layers):
             DM = layer.calculate_delta_matrix(inputs[i], outputs[i], errors[-(i+1)], learning_rate)

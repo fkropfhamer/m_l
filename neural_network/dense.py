@@ -15,11 +15,11 @@ class DenseLayer:
         self.weights -= delta_matrix
 
     def calculate_error(self, error_vector):
-        return np.dot(self.weights.T, error_vector)
+        return np.dot(self.weights, error_vector)
 
     def calculate_delta_matrix(self, input, output, error, learning_rate):
-        O = output * (1 - output)
-        E = error * O
-        I = np.dot(E.reshape(len(E), 1), input.reshape(1, len(input)))
+        I = input * (1 - input)
+        E = error * I
+        O = np.dot(E.reshape(len(E), 1), output.reshape(1, len(output)))
 
-        return learning_rate * I
+        return learning_rate * O
