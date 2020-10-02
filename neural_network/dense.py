@@ -11,5 +11,8 @@ class DenseLayer:
     def feed_forward(self, inputs):
         return self.activation(np.dot(self.weights.T, inputs))
 
-    def calculate_error(self):
-        pass
+    def apply_delta_matrix(self, delta_matrix):
+        self.weights -= delta_matrix
+
+    def calculate_error(self, error_vector):
+        return np.dot(self.weights.T, error_vector)

@@ -12,7 +12,7 @@ class NeuralNetwork:
         self.layers.append(layer)
 
 
-    def fit(self, trainings_data, labels, epochs=10):
+    def fit(self, trainings_data, labels, epochs=10, learning_rate=0.1):
         """Train the neural network
 
         Keyword arguments:
@@ -28,10 +28,10 @@ class NeuralNetwork:
                 features = row[:-1]
                 label = row[len(row) - 1]
                 
-                self.update_weights(features, label)
+                self.update_weights(features, label, learning_rate)
 
 
-    def update_weights(self, features, labels):
+    def update_weights(self, features, labels, learning_rate):
         inputs = [features]
         outputs = []
         errors = []
