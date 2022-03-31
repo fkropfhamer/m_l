@@ -36,19 +36,19 @@ class PerceptronTest(unittest.TestCase):
     def test_update(self):
         p = Perceptron()
 
-        p.weights = [1,2]
+        p.weights = [1, 2]
 
-        p.update([2,2], 1)
+        p.update([2, 2], 1)
 
-        self.assertEqual(p.weights, [1,2])
+        self.assertEqual(p.weights, [1, 2])
 
-        p.update([2,2], 0)
+        p.update([2, 2], 0)
 
         self.assertEqual(p.weights, [-1, 0])
 
-        p.weights = [-1,-2]
+        p.weights = [-1, -2]
 
-        p.update([2,2], 1)
+        p.update([2, 2], 1)
 
         self.assertEqual(p.weights, [1, 0])
 
